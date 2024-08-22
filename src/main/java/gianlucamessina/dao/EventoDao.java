@@ -1,10 +1,14 @@
 package gianlucamessina.dao;
 
+import gianlucamessina.entities.Concerto;
 import gianlucamessina.entities.Evento;
+import gianlucamessina.enums.GenereConcerto;
 import gianlucamessina.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.UUID;
 
 public class EventoDao {
@@ -50,5 +54,16 @@ public class EventoDao {
         transaction.commit();
 
         System.out.println("L'evento con id: " + eventoId + " è stato rimosso con successo!");
+    }
+
+    public List<Concerto> getConcertiInStreaming(Boolean bool) {
+        TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concerto c WHERE c.streaming = :bool", Concerto.class);
+
+        query.setParameter("bool", bool);
+        return query.getResultList();
+    }
+
+    public List<Concerto> getConcertiPerGenere(GenereConcerto genere){
+        TypedQuery<Concerto> query= em.createQuery("")
     }
 }

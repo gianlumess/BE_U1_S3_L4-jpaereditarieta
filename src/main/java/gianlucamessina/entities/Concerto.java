@@ -2,16 +2,16 @@ package gianlucamessina.entities;
 
 import gianlucamessina.enums.GenereConcerto;
 import gianlucamessina.enums.TipoEvento;
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 @DiscriminatorValue("concerto")
+@Table(name = "concerti")
 public class Concerto extends Evento {
     @Column(name = "genere")
+    @Enumerated(EnumType.STRING)
     private GenereConcerto genere;
     @Column(name = "in_streaming")
     private boolean streaming;
