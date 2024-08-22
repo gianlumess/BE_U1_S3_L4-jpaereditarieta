@@ -63,7 +63,10 @@ public class EventoDao {
         return query.getResultList();
     }
 
-    public List<Concerto> getConcertiPerGenere(GenereConcerto genere){
-        TypedQuery<Concerto> query= em.createQuery("")
+    public List<Concerto> getConcertiPerGenere(GenereConcerto genere) {
+        TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
+
+        query.setParameter("genere", genere);
+        return query.getResultList();
     }
 }

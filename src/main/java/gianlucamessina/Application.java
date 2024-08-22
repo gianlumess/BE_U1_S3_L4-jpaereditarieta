@@ -31,6 +31,7 @@ public class Application {
         //ld.save(sanSiro);
         //ed.save(coldPlay);
 
-        ed.getConcertiInStreaming(true);
+        ed.getConcertiInStreaming(true).forEach(System.out::println);
+        ed.getConcertiPerGenere(GenereConcerto.POP).forEach(System.out::println);
     }
 }
