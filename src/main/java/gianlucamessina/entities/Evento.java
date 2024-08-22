@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity //facciamo in modo che la classe sia mappata ad una tabella nel DB
+@Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Evento {
     @Id //serve a dichiarare che l'attributo sarà la chiave primaria
     @GeneratedValue //genera un valore il DB
