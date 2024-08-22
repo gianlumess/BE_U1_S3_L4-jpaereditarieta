@@ -46,6 +46,6 @@ public class Concerto extends Evento {
         return "Concerto{" +
                 "genere=" + genere +
                 ", streaming=" + streaming +
-                '}';
+                "} " + super.toString();
     }
 }

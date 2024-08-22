@@ -22,16 +22,27 @@ public class Application {
 
         LocationDao ld = new LocationDao(em);
         EventoDao ed = new EventoDao(em);
+        //*********************** SALVATAGGIO LOCATIONS ****************************************
 
         Location sanSiroFromDb = ld.getById(UUID.fromString("329e5baf-7a97-4bb3-b560-bcafdce52999"));
+        Location circoMassimoFromDb = ld.getById(UUID.fromString("f2ba3829-e0bf-42f0-b78b-420e6c5d19c1"));
 
         Location sanSiro = new Location("San Siro", "Milano");
-        Concerto coldPlay = new Concerto("Concerto dei Coldplay", LocalDate.now(), "seconda data del tour", TipoEvento.PUBBLICO, 10000, sanSiroFromDb, GenereConcerto.POP, true);
-
         //ld.save(sanSiro);
+
+        Location circoMassimo = new Location("Circo Massimo", "Roma");
+        //ld.save(circoMassimo);
+
+        //*********************** SALVATAGGIO CONCERTI ****************************************
+        Concerto coldPlay = new Concerto("Concerto dei Coldplay", LocalDate.now(), "seconda data del tour", TipoEvento.PUBBLICO, 10000, sanSiroFromDb, GenereConcerto.POP, true);
         //ed.save(coldPlay);
 
+        Concerto kanyeWest = new Concerto("Concerto di Kanye West", LocalDate.now().plusYears(1), "Prima data del tour", TipoEvento.PUBBLICO, 16000, circoMassimoFromDb, GenereConcerto.ROCK, false);
+        //ed.save(kanyeWest);
+
+        System.out.println("LISTA CONCERTI STREAMING");
         ed.getConcertiInStreaming(true).forEach(System.out::println);
-        ed.getConcertiPerGenere(GenereConcerto.POP).forEach(System.out::println);
+        System.out.println("LISTA CONCERTI ROCK");
+        ed.getConcertiPerGenere(GenereConcerto.ROCK).forEach(System.out::println);
     }
 }
