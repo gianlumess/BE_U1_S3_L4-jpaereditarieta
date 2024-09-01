@@ -3,9 +3,6 @@ package gianlucamessina.dao;
 import gianlucamessina.entities.PartitaDiCalcio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.TypedQuery;
-
-import java.util.List;
 
 public class PartitaDiCalcioDao {
     private final EntityManager em;
@@ -30,21 +27,6 @@ public class PartitaDiCalcioDao {
         transaction.commit();
 
         System.out.println("La partita tra : " + partita.getSquadraDiCasa() + " e " + partita.getSquadraOspite() + " è stata salvata con successo!");
-    }
-
-    public List<PartitaDiCalcio> getPartiteVinteInCasa() {
-        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa > p.numeroGolSquadraOspite", PartitaDiCalcio.class);
-        return query.getResultList();
-    }
-
-    public List<PartitaDiCalcio> getPartiteVinteInTrasferta() {
-        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa < p.numeroGolSquadraOspite", PartitaDiCalcio.class);
-        return query.getResultList();
-    }
-
-    public List<PartitaDiCalcio> getPartitePareggiate() {
-        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa = p.numeroGolSquadraOspite", PartitaDiCalcio.class);
-        return query.getResultList();
     }
 
 

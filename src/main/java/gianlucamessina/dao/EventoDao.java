@@ -2,6 +2,7 @@ package gianlucamessina.dao;
 
 import gianlucamessina.entities.Concerto;
 import gianlucamessina.entities.Evento;
+import gianlucamessina.entities.PartitaDiCalcio;
 import gianlucamessina.enums.GenereConcerto;
 import gianlucamessina.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
@@ -67,6 +68,21 @@ public class EventoDao {
         TypedQuery<Concerto> query = em.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
 
         query.setParameter("genere", genere);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInCasa() {
+        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa > p.numeroGolSquadraOspite", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta() {
+        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa < p.numeroGolSquadraOspite", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartitePareggiate() {
+        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa = p.numeroGolSquadraOspite", PartitaDiCalcio.class);
         return query.getResultList();
     }
 }

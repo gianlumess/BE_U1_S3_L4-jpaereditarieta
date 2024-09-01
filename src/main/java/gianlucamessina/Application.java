@@ -95,15 +95,15 @@ public class Application {
         ed.getConcertiPerGenere(GenereConcerto.ROCK).forEach(System.out::println);
 
         System.out.println("LISTA PARITE VINTE IN CASA");
-        partitaDao.getPartiteVinteInCasa().forEach(System.out::println);
+        ed.getPartiteVinteInCasa().forEach(System.out::println);
         System.out.println("LISTA PARTITE VINTE IN TRASFERTA");
-        partitaDao.getPartiteVinteInTrasferta().forEach(System.out::println);
+        ed.getPartiteVinteInTrasferta().forEach(System.out::println);
 
         System.out.println("LISTA PARTITE PAREGGIATE");
-        if (partitaDao.getPartitePareggiate().isEmpty()) {
+        if (ed.getPartitePareggiate().isEmpty()) {
             System.out.println("NON CI SONO PARITE TERMINATE IN PAREGGIO");
         } else {
-            partitaDao.getPartitePareggiate().forEach(System.out::println);
+            ed.getPartitePareggiate().forEach(System.out::println);
         }
 
     }
