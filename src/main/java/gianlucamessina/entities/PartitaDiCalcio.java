@@ -83,6 +83,6 @@ public class PartitaDiCalcio extends Evento {
                 ", squadraVincente='" + squadraVincente + '\'' +
                 ", numeroGolSquadraDiCasa=" + numeroGolSquadraDiCasa +
                 ", numeroGolSquadraOspite=" + numeroGolSquadraOspite +
-                '}';
+                "} " + super.toString();
     }
 }

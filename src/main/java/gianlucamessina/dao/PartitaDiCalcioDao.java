@@ -42,5 +42,10 @@ public class PartitaDiCalcioDao {
         return query.getResultList();
     }
 
+    public List<PartitaDiCalcio> getPartitePareggiate() {
+        TypedQuery<PartitaDiCalcio> query = em.createQuery("SELECT p FROM PartitaDiCalcio p WHERE p.numeroGolSquadraDiCasa = p.numeroGolSquadraOspite", PartitaDiCalcio.class);
+        return query.getResultList();
+    }
+
 
 }

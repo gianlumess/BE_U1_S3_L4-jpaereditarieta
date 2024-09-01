@@ -98,5 +98,13 @@ public class Application {
         partitaDao.getPartiteVinteInCasa().forEach(System.out::println);
         System.out.println("LISTA PARTITE VINTE IN TRASFERTA");
         partitaDao.getPartiteVinteInTrasferta().forEach(System.out::println);
+
+        System.out.println("LISTA PARTITE PAREGGIATE");
+        if (partitaDao.getPartitePareggiate().isEmpty()) {
+            System.out.println("NON CI SONO PARITE TERMINATE IN PAREGGIO");
+        } else {
+            partitaDao.getPartitePareggiate().forEach(System.out::println);
+        }
+
     }
 }
